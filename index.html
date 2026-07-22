@@ -62,18 +62,6 @@
     }
 
     /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: var(--bg);
-      border-bottom: 2px solid var(--red);
-      padding: 0 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 56px;
-    }
     .nav-brand {
       font-size: 0.85rem;
       font-weight: 700;
@@ -83,23 +71,7 @@
       text-decoration: none;
     }
     .nav-brand span { color: var(--red); }
-    .nav-links { display: flex; gap: 1.75rem; list-style: none; }
-    .nav-links a {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--ink-mid);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
     .nav-links a:hover { color: var(--red); }
-    .nav-cta {
-      background: var(--red);
-      color: #fff !important;
-      padding: 0.35rem 1rem;
-      border-radius: 2px;
-    }
     .nav-cta:hover { background: var(--red-dark) !important; color: #fff !important; }
 
     /* ── HERO ── */
@@ -330,46 +302,6 @@
   
     /* ===== MOBILE NAV ===== */
     html, body { overflow-x: hidden; max-width: 100%; }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 8px;
-      background: none;
-      border: none;
-      margin-left: auto;
-      flex-shrink: 0;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: currentColor;
-      border-radius: 2px;
-      transition: 0.2s;
-    }
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: inherit;
-      border-top: 1px solid rgba(0,0,0,0.1);
-      padding: 12px 0;
-      z-index: 999;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      padding: 12px 24px;
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      display: block;
-    }
     @media (max-width: 768px) {
       nav, header {
         position: relative;
@@ -383,7 +315,6 @@
       /* hide desktop nav links / items */
       .nav-links, .nav-items, .nav-menu, .nav-right { display: none !important; }
       /* show hamburger */
-      .hamburger { display: flex !important; }
       /* fix any overflow-causing elements */
       nav > *, header > * { flex-shrink: 1; min-width: 0; }
       /* logo stays visible */
@@ -397,28 +328,40 @@
       }
     }
 
+  
+    nav { background: #fff; border-bottom: 2px solid #b91c1c; position: sticky; top: 0; z-index: 100; }
+    .nav-top { max-width: 1100px; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-weight: 900; font-size: 1.1rem; color: #b91c1c; text-decoration: none; letter-spacing: -0.5px; }
+    .nav-links-desktop { display: flex; gap: 1.5rem; list-style: none; align-items: center; }
+    .nav-links-desktop a { text-decoration: none; color: #333; font-size: 0.9rem; font-weight: 500; }
+    .nav-links-desktop a:hover { color: #b91c1c; }
+    .nav-cta-btn { background: #b91c1c; color: #fff !important; padding: 0.4rem 1rem; border-radius: 4px; }
+    .nav-strip { display: none; overflow-x: auto; white-space: nowrap; padding: 0.5rem 1rem; border-top: 1px solid #eee; scrollbar-width: none; }
+    .nav-strip a { display: inline-block; text-decoration: none; color: #333; font-size: 0.85rem; font-weight: 500; margin-right: 1.2rem; }
+    .nav-strip .strip-cta { color: #b91c1c; font-weight: 700; }
+    @media (max-width: 840px) { .nav-links-desktop { display: none; } .nav-strip { display: block; } }
+
   </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a class="nav-brand" href="https://ppcorrugate.com/"><span>PP</span> Corrugate</a>
-  <ul class="nav-links">
-    <li><a href="#products">Products</a></li>
-    <li><a href="#why-pp">Why PP</a></li>
-    <li><a href="#compliance">Compliance</a></li>
-    <li><a href="#faq">FAQ</a></li>
-    <li><a href="https://elipacko.com" class="nav-cta">Get a Quote</a></li>
-  </ul>
-<button class="hamburger" style="color:#b91c1c" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-  <div class="mobile-menu" style="background:inherit">
-  <a href="#products" style="color:#b91c1c">Products</a>
-  <a href="#why-pp" style="color:#b91c1c">Why PP</a>
-  <a href="#compliance" style="color:#b91c1c">Compliance</a>
-  <a href="#faq" style="color:#b91c1c">FAQ</a>
+  <div class="nav-top">
+    <a href="/" class="nav-logo">PPCorrugate.com</a>
+    <ul class="nav-links-desktop" role="list">
+      <li><a href="/corrugated-pp-sheets/">Corrugated PP Sheets</a></li>
+      <li><a href="/pp-slip-sheets/">PP Slip Sheets</a></li>
+      <li><a href="/corrugated-bins/">Corrugated Bins</a></li>
+      <li><a href="https://elipacko.com"class="nav-cta-btn">Get a Quote</a></li>
+    </ul>
+  </div>
+  <div class="nav-strip" role="navigation">
+      <a href="/">Home</a>
+      <a href="/corrugated-pp-sheets/">Corrugated PP Sheets</a>
+      <a href="/pp-slip-sheets/">PP Slip Sheets</a>
+      <a href="/corrugated-bins/">Corrugated Bins</a>
+      <a href="https://elipacko.com"class="strip-cta">Get a Quote</a>
   </div>
 </nav>
 <!-- PHOTO STRIP -->
@@ -629,22 +572,7 @@
 </footer>
 
 
-<script>
-(function(){
-  var btn = document.querySelector('.hamburger');
-  var menu = document.querySelector('.mobile-menu');
-  if(btn && menu){
-    btn.addEventListener('click', function(){
-      menu.classList.toggle('open');
-    });
-    document.addEventListener('click', function(e){
-      if(!btn.contains(e.target) && !menu.contains(e.target)){
-        menu.classList.remove('open');
-      }
-    });
-  }
-})();
-</script>
+
 
 </body>
 </html>
